@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # SPDX-License-Identifier: GPL-2.0
-# Copyright (C) 2020-present Team CoreELEC (https://coreelec.org)
+# Copyright (C) 2020-present Team RicrdssonTv (https://richardpodzemsky.cz)
 
 function disk_park() {
   [ -z "$PARK_WAIT" ] && PARK_WAIT="10"

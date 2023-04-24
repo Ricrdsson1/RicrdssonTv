@@ -2,7 +2,7 @@
 
 # SPDX-License-Identifier: GPL-2.0
 # Copyright (C) 2019 Team LibreELEC (https://libreelec.tv)
-# Copyright (C) 2019-present Team CoreELEC (https://coreelec.org)
+# Copyright (C) 2019-present Team RicrdssonTv (https://richardpodzemsky.cz)
 
 cat_data() {
   echo "========== ${1} =========="

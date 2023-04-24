@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# Copyright (C) 2019-present Team CoreELEC (https://coreelec.org)
+# Copyright (C) 2019-present Team RicrdssonTv (https://richardpodzemsky.cz)
 
 PKG_NAME="inject_bl301"
 PKG_VERSION="cdaff43a6dc6b44381959bab27b687d6c922b1a0"

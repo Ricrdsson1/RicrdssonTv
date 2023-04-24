@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 # Copyright (C) 2017-2018 Team LibreELEC (https://libreelec.tv)
-# Copyright (C) 2018-present Team CoreELEC (https://coreelec.org)
+# Copyright (C) 2018-present Team RicrdssonTv (https://richardpodzemsky.cz)
 
 PKG_NAME="ap6xxx-aml"
 PKG_VERSION="91a6e2bd2ff5e52377190fea04a0433bdbe4e948"

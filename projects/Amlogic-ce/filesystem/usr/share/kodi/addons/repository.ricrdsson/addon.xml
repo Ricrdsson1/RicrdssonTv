@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon id="repository.ricrdsson"
+  version="1.0.1"
+  name="Ričrdsson Repozitář"
+  provider-name="Richard Podzemský">
+  <extension point="xbmc.addon.repository"
+    name="ricrdsson repository">
+    <dir>
+      <info compressed="false">https://repo.richardpodzemsky.cz/repo/addons.xml</info>
+      <checksum>https://repo.richardpodzemsky.cz/repo/addons.xml.md5</checksum>
+      <datadir zip="true">https://repo.richardpodzemsky.cz/repo/</datadir>
+    </dir>
+    <dir minversion="20.9.0">
+      <info compressed="false">https://repo.richardpodzemsky.cz/repo-v21/addons.xml</info>
+      <checksum>https://repo.richardpodzemsky.cz/repo-v21/addons.xml.md5</checksum>
+      <datadir zip="true">https://repo.richardpodzemsky.cz/repo-v21/</datadir>
+    </dir>
+    <dir minversion="19.9.0" maxversion="20.9.0">
+      <info compressed="false">https://repo.richardpodzemsky.cz/repo-v20/addons.xml</info>
+      <checksum>https://repo.richardpodzemsky.cz/repo-v20/addons.xml.md5</checksum>
+      <datadir zip="true">https://repo.richardpodzemsky.cz/repo-v20/</datadir>
+    </dir>
+    <dir minversion="18.9.0" maxversion="19.9.0">
+      <info compressed="false">https://repo.richardpodzemsky.cz/repo-v19/addons.xml</info>
+      <checksum>https://repo.richardpodzemsky.cz/repo-v19/addons.xml.md5</checksum>
+      <datadir zip="true">https://repo.richardpodzemsky.cz/repo-v19/</datadir>
+    </dir>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>Ričrdsson Repozitář</summary>
+    <description>
+      Ričrdsson Repozitář
+    </description>
+    <description lang="cs">
+      Ričrdsson Repozitář
+    </description>
+    <platform>all</platform>
+	<assets>
+		<icon>icon.png</icon>
+		<fanart>fanart.jpg</fanart>
+	</assets>
+    <language>en cs sk</language>
+  </extension>
+</addon>

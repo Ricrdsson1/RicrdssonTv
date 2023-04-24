@@ -5,7 +5,7 @@
 # Copyright (C) 2012 Yann Cézard (eesprit@free.fr)
 # Copyright (C) 2009-2014 Stephan Raue (stephan@openelec.tv)
 # Copyright (C) 2016-present Team LibreELEC (https://libreelec.tv)
-# Copyright (C) 2020-present Team CoreELEC (https://coreelec.org)
+# Copyright (C) 2020-present Team RicrdssonTv (https://richardpodzemsky.cz)
 
 # create directories
 /usr/bin/busybox mkdir -p /dev
@@ -370,7 +370,7 @@ update_file() {
     mount -o remount,rw /flash
 
     rm -f "$3"
-    StartProgress percent "Updating $1... " "$3" $(stat -t "$UPDATE_DIR/$2" | awk '{print $2}')
+    StartProgress percent "Aktualizace $1... " "$3" $(stat -t "$UPDATE_DIR/$2" | awk '{print $2}')
       # use dd here with conv=fsync so that all writes are non-buffered
       # ensuring accurate progress - take the sync hit during the
       # transfer, rather than when flushing file buffers after the progress
@@ -390,7 +390,7 @@ update_partition() {
   local result
 
   if [ -f "$UPDATE_DIR/$2" -a -b "$3" ]; then
-    StartProgress spinner "Updating $1... "
+    StartProgress spinner "Aktualizace $1... "
       result="$(dd if="$UPDATE_DIR/$2" of="$3" 2>&1)"
       StopProgress "done"
     echo "${result}"
@@ -405,20 +405,20 @@ update_bootloader() {
 
   if [ -f $SYSTEM_ROOT/usr/share/bootloader/update.sh ]; then
     echo ""
-    echo "Updating Boot Files... "
+    echo "Aktualizace Boot souboru... "
     sh $SYSTEM_ROOT/usr/share/bootloader/update.sh
     sync
-    echo "Boot Files Updated."
+    echo "Boot soubory aktualizovany."
     echo ""
   fi
 }
 
 load_modules() {
-  progress "Loading kernel modules"
+  progress "Nacitam kernel moduly"
 
   [ ! -f /etc/modules ] && return
   for module in $(cat /etc/modules); do
-    progress "Loading kernel module $module"
+    progress "Nacten kernel modul $module"
     insmod "/usr/lib/modules/$module.ko" || progress "... Failed to load kernel module $module, skipping"
   done
 }
@@ -440,7 +440,7 @@ load_splash() {
   local vres
 
   if [ ! "$SPLASH" = "no" ]; then
-    progress "Loading bootsplash"
+    progress "Nacitam bootsplash"
 
     if [ -e /dev/fb0 ]; then
       # Set framebuffer to a custom resolution and/or fallback to default resolution (1024x768-32), if required.
@@ -503,7 +503,7 @@ load_splash() {
 }
 
 do_reboot() {
-  echo "System reboots now..."
+  echo "System se nyni restartuje..."
 
   # stop output redirection
   [ -n "$TEE_PID" ] && kill $TEE_PID &>/dev/null
@@ -530,31 +530,31 @@ do_reboot() {
 }
 
 force_fsck() {
-  echo "Filesystem corruption has been detected!"
-  echo "To prevent an automatic repair attempt continuing,"
-  echo "press any key or power off your system within the next 120 seconds"
+  echo "Bylo zjisteno poskozeni souboroveho systemu!"
+  echo "Chcete-li zabranit pokracovani pokusu o automatickou opravu,"
+  echo "stiskni jakoukoli klavesu nebo vypni system behem nasledujicich 120 sekund."
   echo ""
   read -t120 -n1
   # The exit status is 0 if input is available
   # The exit status is greater than 128 if the timeout is exceeded
   if [ $? -ne 0 -o $? -gt 128 ]; then
-    echo "Repairing filesystem..."
+    echo "Oprava souboroveho systemu..."
     echo ""
     /usr/sbin/fsck -T -M -y $RUN_FSCK_DISKS
     FSCK_RET=$?
     if [ $(( $FSCK_RET & 8 )) -eq 8 ]; then
       # fubar
-      echo "Forced fsck failed. Your system is broken beyond repair"
-      echo "Please re-install @DISTRONAME@"
+      echo "Vynuceny fsck se nezdaril. Vas system je neopravitelne poskozen"
+      echo "Kontaktuj Richarda Podzemského"
       echo ""
-      echo "Press enter to shutdown now"
+      echo "Stisknete enter pro vypnuti"
       echo ""
       read fubar
       poweroff
     fi
     do_reboot
   else
-    echo "Shutting down..."
+    echo "Vypinani..."
     sleep 5
     sync
     poweroff
@@ -564,18 +564,18 @@ force_fsck() {
 fix_bootlabel() {
 local flash_label
 
-  [ ! -b /dev/CE_FLASH ] && return 0
+  [ ! -b /dev/RP_FLASH ] && return 0
 
-  flash_label=$(/usr/sbin/fatlabel /dev/CE_FLASH)
-  if [ "${flash_label}" != "CE_FLASH" ]; then
+  flash_label=$(/usr/sbin/fatlabel /dev/RP_FLASH)
+  if [ "${flash_label}" != "RP_FLASH" ]; then
     progress "wrong eMMC flash label \"${flash_label}\", fixing it"
-    fatlabel /dev/CE_FLASH CE_FLASH 2>&1 | echo_to_kmsg
+    fatlabel /dev/RP_FLASH RP_FLASH 2>&1 | echo_to_kmsg
   fi
 }
 
 check_disks() {
   if [ "$RUN_FSCK" = "yes" -a -n "$RUN_FSCK_DISKS" ]; then
-    progress "Checking disk(s): $RUN_FSCK_DISKS"
+    progress "Kontrola disku: $RUN_FSCK_DISKS"
     for i in 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0; do
       /usr/sbin/fsck -T -M -p -a $RUN_FSCK_DISKS >/dev/fsck.latest 2>&1
       FSCK_RET=$?
@@ -585,12 +585,12 @@ check_disks() {
 
       # FSCK_RET is the bit-wise OR of the exit codes for each filesystem that is checked.
       if [ $FSCK_RET -ge 16 ]; then
-        progress "General error, continuing..."
+        progress "Obecna chyba, pokracovani..."
         break
       elif [ $(( $FSCK_RET & 8 )) -eq 8 ]; then
         # device not found
         if [ $i -eq 0 ]; then
-          progress "Device not found, continuing..."
+          progress "Zarizeni nebylo nalezeno, pokracovani..."
         else
           usleep 500000
         fi
@@ -599,15 +599,15 @@ check_disks() {
         force_fsck
       elif [ $(( $FSCK_RET & 2 )) -eq 2 ]; then
         # reboot needed
-        echo "Filesystem repaired, reboot needed..."
+        echo "Souborovy system opraven, nutny restart..."
         do_reboot
       elif [ $(( $FSCK_RET & 1 )) -eq 1 ]; then
         # filesystem errors corrected
-        progress "Filesystem errors corrected , continuing..."
+        progress "Chyby souboroveho systemu opraveny, pokracovani..."
         break
       elif [ $FSCK_RET -eq 0 ]; then
         # no errors found
-        progress "No filesystem errors found, continuing..."
+        progress "Nebyly nalezeny zadne chyby souboroveho systemu, pokracovani..."
         break
       fi
     done
@@ -636,7 +636,7 @@ wakeonlan() {
 }
 
 mount_flash() {
-  progress "Mounting flash"
+  progress "Pripojovani flash"
 
   wakeonlan
 
@@ -648,7 +648,7 @@ mount_flash() {
 }
 
 cleanup_flash() {
-  progress "Cleaning up flash (if required)"
+  progress "Cisteni flash (podle potreby)"
 
   if [ -f /flash/pieeprom.bin -o -f /flash/pieeprom.upd -o -f /flash/vl805.bin ]; then
     mount -o remount,rw /flash
@@ -662,7 +662,7 @@ cleanup_flash() {
 }
 
 mount_storage() {
-  progress "Mounting storage"
+  progress "Pripojuji storage"
 
   if [ "$LIVE" = "yes" ]; then
     # mount tmpfs and exit early. disk=xx is not allowed in live mode
@@ -754,7 +754,7 @@ check_out_of_space() {
 }
 
 do_cleanup() {
-  StartProgress spinner "Cleaning up... "
+  StartProgress spinner "Cisteni... "
 
   if mountpoint -q /update; then
     umount /update
@@ -779,7 +779,7 @@ do_cleanup() {
 
   sync
 
-  StopProgress "done"
+  StopProgress "hotovo"
 }
 
 check_force_splash() {
@@ -854,33 +854,33 @@ check_update() {
   mkdir -p $UPDATE_DIR/.tmp &>/dev/null
   sync
 
-  echo "UPDATE IN PROGRESS"
+  echo "PROBIHA AKTUALIZACE"
   echo ""
-  echo "Please do not reboot or turn off your @DISTRONAME@ device!"
+  echo "Zarizeni RicrdssonTv nerestartujte ani nevypinejte"
   echo ""
 
   if [ -f "$UPDATE_TAR" ]; then
     TARRESULT="0"
 
-    echo "Found new .tar archive"
+    echo "Nalezen novy .tar archiv"
     UPDATE_FILENAME="$UPDATE_TAR"
-    StartProgress spinner "Extracting contents of archive... "
+    StartProgress spinner "Extrakce obsahu archivu... "
       tar -xf "$UPDATE_TAR" -C $UPDATE_DIR/.tmp 1>/dev/null 2>/tmp/tarresult.txt || TARRESULT="1"
 
     if [ "${TARRESULT}" -eq "0" ]; then
       mv $UPDATE_DIR/.tmp/*/target/* $UPDATE_DIR &>/dev/null
       sync
-      StopProgress "done"
+      StopProgress "hotovo"
     else
-      StopProgress "FAILED"
+      StopProgress "CHYBA"
 
-      echo "Failed to extract contents of archive file!"
+      echo "Nepodarilo se extrahovat obsah archivniho souboru!"
       echo "tar result: '$(cat /tmp/tarresult.txt)'"
 
-      check_out_of_space "archive"
+      check_out_of_space "archiv"
 
       do_cleanup
-      StartProgress countdown "Normal startup in 30s... " 30 "NOW"
+      StartProgress countdown "Normalni start za 30s... " 30 "TED"
       return 0
     fi
   elif [ -f "$UPDATE_IMG_GZ" -o -f "$UPDATE_IMG" ]; then
@@ -889,25 +889,25 @@ check_update() {
     GZRESULT="0"
 
     if [ -f "$UPDATE_IMG_GZ" ]; then
-      echo "Found new compressed image file"
+      echo "Nalezen novy komprimovaný obrazovy soubor"
       UPDATE_FILENAME="$UPDATE_IMG_GZ"
-      StartProgress spinner "Decompressing image file... "
+      StartProgress spinner "Dekomprimace obrazoveho souboru... "
         gunzip -d -c "$UPDATE_IMG_GZ" 1>$IMG_FILE 2>/tmp/gzresult.txt || GZRESULT="1"
         sync
         [ "${GZRESULT}" -eq "0" ] && StopProgress "OK" || StopProgress "FAILED"
 
       if [ "${GZRESULT}" -eq "1" ]; then
-        echo "Failed to decompress image file!"
+        echo "Nepodarilo se dekomprimovat soubor obrazu!"
         echo "gunzip result: '$(cat /tmp/gzresult.txt)'"
 
         check_out_of_space "compressed image"
 
         do_cleanup
-        StartProgress countdown "Normal startup in 30s... " 30 "NOW"
+        StartProgress countdown "Normalni start za 30s... " 30 "TED"
         return 0
       fi
     else
-      echo "Found new image file"
+      echo "Nalezen novy obrazovy soubor"
       UPDATE_FILENAME="$UPDATE_IMG"
       mv "$UPDATE_IMG" $IMG_FILE
     fi
@@ -923,9 +923,9 @@ check_update() {
       # check for GPT partititon
       OFFSET=$(fdisk -u -l $LOOP 2>/dev/null | awk '/^Number/{part=1; next}; part{print $2; exit}')
       if [ -z "$OFFSET" ]; then
-        echo "Could not find a valid system partition in image file!"
+        echo "V souboru bitove kopie se nepodarilo najit platny systemovy oddil!"
         do_cleanup
-        StartProgress countdown "Normal startup in 10s... " 10 "NOW"
+        StartProgress countdown "Normalni start za 10s... " 10 "TED"
         return 0
       fi
     fi
@@ -976,19 +976,19 @@ check_update() {
         sed "s#target/KERNEL#$UPDATE_DIR/$UPDATE_KERNEL#g" "$UPDATE_DIR/${UPDATE_KERNEL}.md5" >"$UPDATE_ROOT/${UPDATE_KERNEL}.check.md5"
         sed "s#target#$UPDATE_DIR#g" "$UPDATE_DIR/${UPDATE_SYSTEM}.md5" >"$UPDATE_ROOT/${UPDATE_SYSTEM}.check.md5"
 
-        StartProgress spinner "Checking ${UPDATE_KERNEL}.md5... "
+        StartProgress spinner "Kontrola ${UPDATE_KERNEL}.md5... "
           if md5sum -sc "$UPDATE_ROOT/${UPDATE_KERNEL}.check.md5"; then
             StopProgress "OK"
           else
-            StopProgress "FAILED"
+            StopProgress "CHYBA"
             MD5_FAILED="1"
           fi
 
-        StartProgress spinner "Checking ${UPDATE_SYSTEM}.md5... "
+        StartProgress spinner "Kontrola ${UPDATE_SYSTEM}.md5... "
           if md5sum -sc "$UPDATE_ROOT/${UPDATE_SYSTEM}.check.md5"; then
             StopProgress "OK"
           else
-            StopProgress "FAILED"
+            StopProgress "CHYBA"
             MD5_FAILED="1"
           fi
       fi
@@ -1039,9 +1039,9 @@ check_update() {
   FLASH_FREE_MIN=$((FLASH_FREE_MIN * 1024 * 1024))
 
   if [ $TMP_SIZE -ge $FLASH_FREE_MIN ]; then
-    echo "Checking size: OK"
+    echo "Kontrola velikosti: OK"
   else
-    echo "Checking size: FAILED"
+    echo "Kontrola velikosti: CHYBA"
     echo ""
     echo "Your System (FAT) partition is too small for this update,"
     echo "and there is not enough space for the update to be installed!"
@@ -1121,15 +1121,15 @@ amlogic_dtb_exists() {
 check_amlogic_dtb() {
   if grep -q "amlogic" /proc/device-tree/compatible; then
     if grep -q "official" /sysroot/etc/os-release; then
-      progress "Checking Amlogic DTB"
+      progress "Kontrola Amlogic DTB"
 
       if ! amlogic_dtb_exists; then
-        echo "WARNING: Your device-tree is out-of-date!"
+        echo "VAROVANI: Vas strom zarizení je zastaraly!"
         echo ""
-        echo "Please update it to resume normal startup."
+        echo "Aktualizujte jej pro obnoveni normalniho spusteni."
         echo ""
 
-        StartProgress countdown "Normal startup in 30s... " 30 "NOW"
+        StartProgress countdown "Normalni start za 30s... " 30 "TED"
         echo ""
       fi
     fi

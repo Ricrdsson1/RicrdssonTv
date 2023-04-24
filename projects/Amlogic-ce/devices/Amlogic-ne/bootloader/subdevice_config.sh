@@ -1,6 +1,6 @@
 #!/bin/sh
 # SPDX-License-Identifier: GPL-2.0-or-later
-# Copyright (C) 2022-present Team CoreELEC (https://coreelec.org)
+# Copyright (C) 2022-present Team RicrdssonTv (https://richardpodzemsky.cz)
 
 unset DEVICE_CFGLOAD
 unset DEVICE_BOOT_LOGO

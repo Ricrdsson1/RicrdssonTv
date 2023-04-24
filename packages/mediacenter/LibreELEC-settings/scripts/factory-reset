@@ -37,7 +37,7 @@ get_target() {
 
 show_reset_msg() {
   echo -e "RESET IN PROGRESS\n"
-  echo -e "Please do not reboot or turn off your @DISTRONAME@ device!\n"
+  echo -e "Please do not reboot or turn off your RicrdssonTv device!\n"
 }
 
 if [ -f /storage/.cache/reset_hard ]; then

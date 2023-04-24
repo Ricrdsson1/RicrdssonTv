@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# Copyright (C) 2018-present Team CoreELEC (https://coreelec.org)
+# Copyright (C) 2018-present Team RicrdssonTv (https://richardpodzemsky.cz)
 
 PKG_NAME="u-boot-Odroid_C4"
 PKG_VERSION="43d26e1865333916d7889a586948e11b83b2c558"

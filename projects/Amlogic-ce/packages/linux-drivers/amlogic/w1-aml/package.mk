@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0
-# Copyright (C) 2022-present Team CoreELEC (https://coreelec.org)
+# Copyright (C) 2022-present Team RicrdssonTv (https://richardpodzemsky.cz)
 
 PKG_NAME="w1-aml"
 PKG_VERSION="d451f7461891bd7ba54c146b411c1cf9fee64279"

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # SPDX-License-Identifier: GPL-2.0-or-later
-# Copyright (C) 2023-present Team CoreELEC (https://coreelec.org)
+# Copyright (C) 2023-present Team RicrdssonTv (https://richardpodzemsky.cz)
 
 SMP="../smp_affinity"
 MESONIR="`find /proc/irq/ -name *meson*ir`"

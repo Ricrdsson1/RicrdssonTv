@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# Copyright (C) 2018-present Team CoreELEC (https://coreelec.tv)
+# Copyright (C) 2018-present Team RicrdssonTv (https://richardpodzemsky.cz)
 
 PKG_NAME="mt7668-aml"
 PKG_VERSION="fd76e10404b220c552fc7951f5a359b56d599e3b"

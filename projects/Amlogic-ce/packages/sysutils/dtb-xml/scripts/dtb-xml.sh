@@ -1,7 +1,7 @@
 #!/bin/sh
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
-# Copyright (C) 2020-present Team CoreELEC (https://coreelec.org)
+# Copyright (C) 2020-present Team RicrdssonTv (https://richardpodzemsky.cz)
 #
 #  Update dtb.img by dtb.xml
 #

@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0
 # Copyright (C) 2017-present Team LibreELEC (https://libreelec.tv)
-# Copyright (C) 2020-present Team CoreELEC (https://coreelec.org)
+# Copyright (C) 2020-present Team RicrdssonTv (https://richardpodzemsky.cz)
 
 PKG_NAME="driverselect"
 PKG_VERSION="d0f919f165f0814533548e80d4e3c0d24c1b153a"

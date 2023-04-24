@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # SPDX-License-Identifier: GPL-2.0-or-later
-# Copyright (C) 2018-present Team CoreELEC (https://coreelec.org)
+# Copyright (C) 2018-present Team RicrdssonTv (https://richardpodzemsky.cz)
 
 # copy amlogic autoscript files to part1 if needed
 if [ "${SUBDEVICE:0:9}" != "Odroid_N2" ] && [ "${SUBDEVICE}" != "Odroid_C4" ] && [ "${SUBDEVICE}" != "Odroid_HC4" ] && [ "${SUBDEVICE}" != "LePotato" ] && [ "${SUBDEVICE}" != "LaFrite" ] && [ "${SUBDEVICE:0:10}" != "Radxa_Zero" ]; then

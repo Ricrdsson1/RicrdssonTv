@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0
-# Copyright (C) 2021-present Team CoreELEC (https://coreelec.org)
+# Copyright (C) 2021-present Team RicrdssonTv (https://richardpodzemsky.cz)
 
 PKG_NAME="qca-firmware-aml"
 PKG_VERSION="56716df3468fd87ade0ac98af5ec687376e9b4ef"

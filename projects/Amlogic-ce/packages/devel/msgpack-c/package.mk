@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0
-# Copyright (C) 2022-present Team CoreELEC (https://coreelec.org)
+# Copyright (C) 2022-present Team RicrdssonTv (https://richardpodzemsky.cz)
 
 PKG_NAME="msgpack-c"
 PKG_VERSION="c3df1bb26ebdd01d618ecca7ae2d6b4e37d5abd7"

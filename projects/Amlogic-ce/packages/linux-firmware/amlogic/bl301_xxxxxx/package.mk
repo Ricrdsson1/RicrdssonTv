@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# Copyright (C) 2018-present Team CoreELEC (https://coreelec.org)
+# Copyright (C) 2018-present Team RicrdssonTv (https://richardpodzemsky.cz)
 
 BL2_MIN_VERSION="xxxxxx"
 PKG_NAME="bl301_${BL2_MIN_VERSION}"
