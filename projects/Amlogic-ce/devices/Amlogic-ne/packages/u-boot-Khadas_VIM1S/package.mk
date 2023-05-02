@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# Copyright (C) 2022-present Team CoreELEC (https://coreelec.org)
+# Copyright (C) 2022-present Team RicrdssonTv (https://richardpodzemsky.cz)
 
 PKG_NAME="u-boot-Khadas_VIM1S"
 PKG_VERSION="8108641ce73b1ae89a9f58e0d719ca864caef5c2"

@@ -23,7 +23,7 @@ PKG_CONFIGURE_OPTS_TARGET="--disable-static \
                            --disable-nls \
                            --without-libiconv-prefix \
                            --without-libintl-prefix \
-                           --with-os-name="${DISTRONAME}" \
+                           --with-os-name="RicrdssonTv" \
                            --with-db-path="/storage/.kodi/userdata/addon_data/service.minidlna/db" \
                            --with-os-url="https://libreelec.tv""
 

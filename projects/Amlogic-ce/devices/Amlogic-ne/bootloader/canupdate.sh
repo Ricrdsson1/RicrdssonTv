@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# Copyright (C) 2018-present Team CoreELEC (https://coreelec.tv)
+# Copyright (C) 2018-present Team RicrdssonTv
 
 # detect legacy kernel installs and abort to prevent upgrades
 if [[ "$(uname -r)" = "3.14."* ]] || [[ "$(uname -r)" = "4.9."* ]]; then

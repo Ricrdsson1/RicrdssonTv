@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# Copyright (C) 2021-present Team CoreELEC (https://coreelec.org)
+# Copyright (C) 2021-present Team RicrdssonTv (https://richardpodzemsky.cz)
 
 . $(get_pkg_directory bl301_xxxxxx)/package.mk
 

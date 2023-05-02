@@ -53,9 +53,9 @@ addon() {
       -e "s|^#Heartbeat=.*$|Heartbeat=open|" \
       -e "s|^#TitleSpeed=.*$|TitleSpeed=4|" \
       -e "s|^#Hello=\"  Welcome to\"|Hello=\"Welcome to\"|" \
-      -e "s|^#Hello=\"   LCDproc!\"|Hello=\"${DISTRONAME}\"|" \
+      -e "s|^#Hello=\"   LCDproc!\"|Hello=\"RicrdssonTv\"|" \
       -e "s|^#GoodBye=\"Thanks for using\"|GoodBye=\"Thanks for using\"|" \
-      -e "s|^#GoodBye=\"   LCDproc!\"|GoodBye=\"${DISTRONAME}\"|" \
+      -e "s|^#GoodBye=\"   LCDproc!\"|GoodBye=\"RicrdssonTv\"|" \
       -e "s|^#normal_font=.*$|normal_font=/usr/share/fonts/liberation/LiberationMono-Bold.ttf|" \
       -i ${ADDON_BUILD}/${PKG_ADDON_ID}/config/LCDd.conf
 

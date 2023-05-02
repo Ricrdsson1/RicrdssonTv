@@ -70,7 +70,7 @@ CoreELEC:~ #
 +				len = 0;
 +
 +			memset(buf, ' ', sizeof(buf));
-+			snprintf(&buf[len], sizeof(buf) - len, "CoreELEC dt-id: ");
++			snprintf(&buf[len], sizeof(buf) - len, "RicrdssonTv dt-id: ");
 +			fputs(buf, stdout);
 +			fgets(buf, sizeof(buf), f);
 +			fputs(buf, stdout);

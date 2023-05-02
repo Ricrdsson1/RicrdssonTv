@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # SPDX-License-Identifier: GPL-2.0-or-later
-# Copyright (C) 2018-present Team CoreELEC (https://coreelec.org)
+# Copyright (C) 2018-present Team RicrdssonTv (https://richardpodzemsky.cz)
 
-DISTRO_BOOTLABEL="COREELEC"
+DISTRO_BOOTLABEL="RICRDSSONTV"
 DISTRO_DISKLABEL="STORAGE"
 SYSTEM_PART_START=8192
 SYSTEM_SIZE=512

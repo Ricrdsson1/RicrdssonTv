@@ -17,7 +17,7 @@ done
 
 if [ -f "${BACKUP_FILE}" ]; then
   echo -e "RESTORE IN PROGRESS\n"
-  echo -e "Please do not reboot or turn off your @DISTRONAME@ device!\n"
+  echo -e "Please do not reboot or turn off your RicrdssonTv device!\n"
 
   StartProgress spinner "Checking backup file... "
     tar tf "${BACKUP_FILE}" &>/dev/null

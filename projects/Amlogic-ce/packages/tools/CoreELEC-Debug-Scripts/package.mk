@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# Copyright (C) 2018-present Team CoreELEC (https://coreelec.org)
+# Copyright (C) 2018-present Team RicrdssonTv (https://richardpodzemsky.cz)
 
 PKG_NAME="CoreELEC-Debug-Scripts"
 PKG_VERSION="1c7ff1b8c477c6ba0411d16ab0c15e0b3c3b3ff0"

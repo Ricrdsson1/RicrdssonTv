@@ -94,18 +94,17 @@ if [ "${OFFICIAL}" = "yes" ]; then
   LIBREELEC_BUILD="official"
 else
   if [ ${NON_PERIODIC} ]; then
-    OS_STAGE="devel"
-    BUILD_NUM="_$(date +%Y%m%d%H%M%S)"
+    OS_STAGE="RicrdssonTv"
   fi
   if [ -n "${BUILDER_NAME}" ]; then
     LIBREELEC_BUILD="${BUILDER_NAME}"
   else
-    LIBREELEC_BUILD="community"
+    LIBREELEC_BUILD="official"
   fi
 fi
 
 if [ -n "${OS_STAGE}" -a ! "${OS_STAGE}${BUILD_NUM}" = "build0" ]; then
-  EXTRA_VERSION="_${OS_STAGE}${BUILD_NUM}"
+  EXTRA_VERSION=""
 fi
 
 LIBREELEC_VERSION="${OS_VERSION}-${OS_CODENAME}${EXTRA_VERSION}"
@@ -120,7 +119,7 @@ TARGET_VERSION="${LIBREELEC_ARCH}-${LIBREELEC_VERSION}"
 if [ -n "${CUSTOM_IMAGE_NAME}" ]; then
   IMAGE_NAME="${CUSTOM_IMAGE_NAME}"
 else
-  IMAGE_NAME="${DISTRONAME}-${TARGET_VERSION}"
+  IMAGE_NAME="RicrdssonTv-${TARGET_VERSION}"
 
   if [ -n "${UBOOT_SYSTEM}" ] && [ "${UBOOT_SYSTEM}" != "${DEVICE:-${PROJECT}}" ]; then
     IMAGE_NAME="${IMAGE_NAME}-${UBOOT_SYSTEM}"
@@ -171,19 +170,19 @@ echo "${TARGET_VERSION}" > ${INSTALL}/etc/release
 
 # Create /etc/os-release
 cat <<EOF >${INSTALL}/etc/os-release
-NAME="${DISTRONAME}"
+NAME="RicrdssonTv"
 VERSION="${LIBREELEC_VERSION}"
 ID="${DISTRONAME,,}"
 VERSION_ID="${OS_VERSION}"
-PRETTY_NAME="${DISTRONAME} (${LIBREELEC_BUILD}): ${LIBREELEC_VERSION}"
-HOME_URL="https://coreelec.org"
+PRETTY_NAME="RicrdssonTv 0.0.1"
+HOME_URL="https://richardpodzemsky.cz"
 BUG_REPORT_URL="${ORIGIN_URL}"
 BUILD_ID="${GIT_HASH}"
 LIBREELEC_ARCH="${LIBREELEC_ARCH}"
 LIBREELEC_BUILD="${LIBREELEC_BUILD}"
 LIBREELEC_PROJECT="${PROJECT}"
 COREELEC_ARCH="${LIBREELEC_ARCH}"
-COREELEC_BUILD="${LIBREELEC_BUILD}"
+COREELEC_BUILD="official"
 COREELEC_PROJECT="${PROJECT}"
 EOF
 [ -n "${DEVICE}" ] && echo "COREELEC_DEVICE=\"${DEVICE}\"" >> ${INSTALL}/etc/os-release
@@ -205,7 +204,7 @@ ${GREETING1}
 ${GREETING2}
 ${GREETING3}
 ${GREETING4}
-${DISTRONAME} (${LIBREELEC_BUILD}): ${LIBREELEC_VERSION} (${LIBREELEC_ARCH})
+RicrdssonTv 0.0.1
 EOF
 
 ln -sf /etc/issue ${INSTALL}/etc/motd
