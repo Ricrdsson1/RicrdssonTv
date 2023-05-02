@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# Copyright (C) 2023-present Team CoreELEC (https://coreelec.org)
+# Copyright (C) 2023-present Team RicrdssonTv (https://richardpodzemsky.cz)
 
 PKG_NAME="pyrsistent"
 PKG_VERSION="0.19.3"

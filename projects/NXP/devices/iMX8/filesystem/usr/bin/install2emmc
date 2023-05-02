@@ -37,7 +37,7 @@ fi
 
 echo ""
 echo -e "\033[36m==============================="
-echo "Installing @DISTRONAME@ to eMMC"
+echo "Installing RicrdssonTv to eMMC"
 echo -e "===============================\033[37m"
 echo ""
 echo "eMMC found at ${DISK}"

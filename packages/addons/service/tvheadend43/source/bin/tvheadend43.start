@@ -1,7 +1,12 @@
 #!/bin/sh
 
+<<<<<<< HEAD:packages/addons/service/tvheadend43/source/bin/tvheadend43.start
 # SPDX-License-Identifier: GPL-2.0
 # Copyright (C) 2016-present Team LibreELEC (https://libreelec.tv)
+=======
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Copyright (C) 2018-present Team RicrdssonTv (https://richardpodzemsky.cz)
+>>>>>>> Prvni pokus o Remote-tracking:projects/Amlogic-ce/packages/addons/service/tvheadend43/source/bin/tvheadend43.start
 
 . /etc/profile
 

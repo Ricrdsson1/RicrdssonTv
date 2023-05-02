@@ -1,5 +1,5 @@
 #!/bin/sh
-# Copyright (C) 2022-present Team CoreELEC (https://coreelec.org)
+# Copyright (C) 2022-present Team RicrdssonTv (https://richardpodzemsky.cz)
 
 [ -z "${TMATE_CONF}" ] && exit 1
 

@@ -2,7 +2,7 @@
 
 # SPDX-License-Identifier: GPL-2.0
 # Copyright (C) 2018-present Team LibreELEC (https://libreelec.tv)
-# Copyright (C) 2020-present Team CoreELEC (https://coreelec.org)
+# Copyright (C) 2020-present Team RicrdssonTv (https://richardpodzemsky.cz)
 
 COMPATIBLE=$(cat /proc/device-tree/compatible 2>/dev/null | tr -d '\000' | sed -n -e 's/.*\(allwinner\|amlogic\|fsl\|nxp\|qcom\|raspberrypi\|rockchip\|samsung\).*/\1/p')
 

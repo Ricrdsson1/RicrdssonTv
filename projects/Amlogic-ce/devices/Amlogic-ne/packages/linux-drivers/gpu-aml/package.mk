@@ -1,5 +1,5 @@
 # SPDX-License-Identifier: GPL-2.0-or-later
-# Copyright (C) 2018-present Team CoreELEC (https://coreelec.org)
+# Copyright (C) 2018-present Team RicrdssonTv (https://richardpodzemsky.cz)
 
 PKG_NAME="gpu-aml"
 PKG_VERSION="1e963e9e181df78a6fb318010b0553084ed1523d"

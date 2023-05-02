@@ -7,7 +7,7 @@ index 07f5b88..2cfe7cd 100644
  
    /* The supplied mapping array has order: FL-FR-C-LFE-RL-RR-SL-SR
 -   * ALSA expects the order: FL-FR-RL-RR-C-LFE-SL-SR
-+   * CoreELEC expects the order: FL-FR-LFE-C-RL-RR-SL-SR
++   * RicrdssonTv expects the order: FL-FR-LFE-C-RL-RR-SL-SR
     * We need copy the mapping locally and swap the channels around.
     */
    memcpy(alsaMapping, opusConfig->mapping, sizeof(alsaMapping));
@@ -30,7 +30,7 @@ index e7c1ad2..4f78594 100644
  
    /* The supplied mapping array has order: FL-FR-C-LFE-RL-RR-SL-SR
 -   * ALSA expects the order: FL-FR-RL-RR-C-LFE-SL-SR
-+   * CoreELEC expects the order: FL-FR-LFE-C-RL-RR-SL-SR
++   * RicrdssonTv expects the order: FL-FR-LFE-C-RL-RR-SL-SR
     * We need copy the mapping locally and swap the channels around.
     */
    memcpy(alsaMapping, opusConfig->mapping, sizeof(alsaMapping));

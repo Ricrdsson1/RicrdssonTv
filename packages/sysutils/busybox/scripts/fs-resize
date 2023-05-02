@@ -24,7 +24,7 @@ if [ -e /storage/.please_resize_me ] ; then
   if [ -d /storage/.kodi -o -d /storage/.config -o -d /storage/.cache ] ; then
     rm -f /storage/.please_resize_me
     sync
-    echo "Resizing is not permitted - the system has already been initialised." | tee -a $LOG
+    echo "Zmena velikosti neni povolena - system jiz byl inicializovan." | tee -a $LOG
     mount -o remount,ro /flash
     StartProgress countdown "Rebooting in 15s... " 15 "NOW"
     reboot -f
@@ -53,24 +53,24 @@ if [ -e /storage/.please_resize_me ] ; then
   if [ ! -z "$DISK" -a ! -z "$PART" ] ; then
     umount $PART
 
-    echo "PARTITION RESIZING IN PROGRESS"
+    echo "PROBIHA ZMENA VELIKOSTI ODDILU"
     echo ""
-    echo "Please do not reboot or turn off your @DISTRONAME@ device!"
+    echo "Zarízeni RicrdssonTv nerestartujte ani nevypinejte!"
     echo ""
 
     # identify the partition scheme, and if gpt fix minor issues such as gpt header not at end of disk
     SCHEME=$(blkid -s PTTYPE -o value $DISK)
     if [ "$SCHEME" = "gpt" ]; then
-      StartProgressLog spinner "Checking layout...      " "sgdisk -e $DISK >>$LOG 2>&1"
+      StartProgressLog spinner "Kontrola rozvrzeni...      " "sgdisk -e $DISK >>$LOG 2>&1"
     fi
 
-    StartProgressLog spinner "Resizing partition...   " "parted -s -m $DISK resizepart 2 100% >>$LOG 2>&1"
-    StartProgressLog spinner "Checking file system... " "e2fsck -f -p $PART >>$LOG 2>&1"
-    StartProgressLog spinner "Resizing file system... " "resize2fs $PART >>$LOG 2>&1"
-    StartProgress countdown "Rebooting in 2s...     " 2 "NOW"
+    StartProgressLog spinner "Zmena velikosti oddilu...   " "parted -s -m $DISK resizepart 2 100% >>$LOG 2>&1"
+    StartProgressLog spinner "Kontrola souboroveho systemu... " "e2fsck -f -p $PART >>$LOG 2>&1"
+    StartProgressLog spinner "Zmena velikosti souboroveho systemu... " "resize2fs $PART >>$LOG 2>&1"
+    StartProgress countdown "Restart za 2s...     " 2 "TED"
   else
     echo "Partition was not detected - resizing aborted."
-    StartProgress countdown "Rebooting in 15s... " 15 "NOW"
+    StartProgress countdown "Restart za 15s... " 15 "TED"
   fi
   mount -o remount,ro /flash
 fi

@@ -1,6 +1,6 @@
 #!/bin/sh
 # SPDX-License-Identifier: GPL-2.0-or-later
-# Copyright (C) 2022-present Team CoreELEC (https://coreelec.org)
+# Copyright (C) 2022-present Team RicrdssonTv (https://richardpodzemsky.cz)
 
 # use chroot because of running xmlstarlet and other binaries build with newer glibc
 if [ "${SYSTEM_ROOT}" = "/update" ]; then
@@ -100,7 +100,7 @@ for arg in $(cat /proc/cmdline); do
 
       UPDATE_DTB_SOURCE="/usr/share/bootloader/device_trees/${DT_ID}.dtb"
       if [ -n "${DT_ID}" -a -f "${UPDATE_DTB_SOURCE}" ]; then
-        echo "Updating device tree with ${DT_ID}.dtb..."
+        echo "Aktualizace stromu zarizeni pomoci ${DT_ID}.dtb..."
         case ${BOOT_PART} in
           /dev/coreelec)
             dd if=/dev/zero of=/dev/dtb bs=256k count=1 status=none
@@ -143,21 +143,21 @@ for arg in $(cat /proc/cmdline); do
 done
 
 if [ -d ${BOOT_ROOT}/device_trees ]; then
-  echo "Updating device_trees folder..."
+  echo "Aktualizace slozky device_trees..."
   rm ${BOOT_ROOT}/device_trees/*.dtb
   cp -p /usr/share/bootloader/device_trees/*.dtb ${BOOT_ROOT}/device_trees/
 fi
 
 if [ -f /usr/share/bootloader/config.ini ]; then
   if [ ! -f ${BOOT_ROOT}/config.ini ]; then
-    echo "Creating config.ini..."
+    echo "Vytvarim config.ini..."
     cp -p /usr/share/bootloader/config.ini ${BOOT_ROOT}/config.ini
   fi
 fi
 
 if [ -f ${BOOT_ROOT}/dtb.xml ]; then
   if [ -f /usr/lib/coreelec/dtb-xml ]; then
-    echo "Updating dtb.img by dtb.xml..."
+    echo "Aktualizace dtb.img na dtb.xml..."
     /usr/lib/coreelec/dtb-xml
   fi
 fi
@@ -169,19 +169,19 @@ if [ -f ${BOOT_ROOT}/boot.scr ]; then
   fi
 
   if [ -f /usr/share/bootloader/${DEVICE_BOOT_SCR} ]; then
-    echo "Updating boot.scr..."
+    echo "Aktualizace boot.scr..."
     cp -p /usr/share/bootloader/${DEVICE_BOOT_SCR} ${BOOT_ROOT}/boot.scr
   fi
 fi
 
 if [ -f ${BOOT_ROOT}/cfgload ]; then
   if [ -f /usr/share/bootloader/${DEVICE_CFGLOAD} ]; then
-    echo "Updating cfgload..."
+    echo "Aktualizace cfgload..."
     cp -p /usr/share/bootloader/${DEVICE_CFGLOAD} ${BOOT_ROOT}/cfgload
   fi
 
   if [ -f /usr/share/bootloader/aml_autoscript ]; then
-    echo "Updating aml_autoscript..."
+    echo "Aktualizace aml_autoscript..."
     cp -p /usr/share/bootloader/aml_autoscript ${BOOT_ROOT}
 
     if [ -e /dev/env ]; then
@@ -196,7 +196,7 @@ if [ -f ${BOOT_ROOT}/cfgload ]; then
 
   /usr/lib/coreelec/check-bl301
   if [ ${?} = 1 ]; then
-    echo "Found custom CoreELEC BL30, running inject_bl301 tool..."
+    echo "Nalezen vlastni RicrdssonTv BL301..."
     inject_bl301 -Y &>/dev/null
   fi
 fi
@@ -225,4 +225,4 @@ fi
 mount -o ro,remount ${BOOT_ROOT}
 
 # Leave a hint that we just did an update
-echo "UPDATE" > /storage/.config/boot.hint
+echo "AKTUALIZACE" > /storage/.config/boot.hint

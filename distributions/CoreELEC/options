@@ -4,23 +4,23 @@
   DISTRONAME="CoreELEC"
 
 # short project description
-  DESCRIPTION="CoreELEC is a fast and user-friendly Kodi Entertainment Center distribution."
+  DESCRIPTION="RicrdssonTv is a fast and user-friendly Kodi Entertainment Center distribution."
 
 
 ### USER INTERFACE SETTINGS ###
 
 # Welcome Message for e.g. SSH Server (up to 5 Lines)
   GREETING0="##############################################"
-  GREETING1="#                  CoreELEC                  #"
-  GREETING2="#            https://coreelec.org            #"
+  GREETING1="#                  RicrdssonTv               #"
+  GREETING2="#            https://richardpodzemsky.cz     #"
   GREETING3="##############################################"
   GREETING4=""
 
 # Root password to integrate in the target system
-  ROOT_PASSWORD="coreelec"
+  ROOT_PASSWORD="ricrdssontv"
 
 # Partition labels for USB/SD installation media
-  DISTRO_BOOTLABEL="COREELEC"
+  DISTRO_BOOTLABEL="RICRDSSONTV"
   DISTRO_DISKLABEL="STORAGE"
 
 
@@ -171,7 +171,7 @@
   ADDON_REPO_ID="repository.coreelec"
 
 # Name of the default addon repository
-  ADDON_REPO_NAME="CoreELEC Add-ons"
+  ADDON_REPO_NAME="RicrdssonTv Add-ons"
 
 # set the addon dirs
   ADDON_PATH="$DEVICE/$ADDON_VERSION/$TARGET_ARCH"

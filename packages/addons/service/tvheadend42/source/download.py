@@ -1,5 +1,10 @@
+<<<<<<< HEAD:packages/addons/service/tvheadend42/source/download.py
 # SPDX-License-Identifier: GPL-2.0
 # Copyright (C) 2018-present Team LibreELEC (https://libreelec.tv)
+=======
+# SPDX-License-Identifier: GPL-2.0-or-later
+# Copyright (C) 2018-present Team RicrdssonTv (https://richardpodzemsky.cz)
+>>>>>>> Prvni pokus o Remote-tracking:projects/Amlogic-ce/packages/addons/service/tvheadend43/source/download.py
 
 import urllib.request, urllib.parse, urllib.error, os, zipfile
 from urllib.error import URLError
