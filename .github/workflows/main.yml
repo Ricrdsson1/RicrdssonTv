@@ -1,0 +1,26 @@
+name: CI
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: sudo apt-get install -y build-essential make gcc git xfonts-utils libparse-yapp-perl gperf xsltproc libxml-parser-perl patchutils lzop
+
+      - name: Build the project
+        run: make PROJECT=Amlogic-ce DEVICE=Amlogic-ne ARCH=arm image
+
+      - name: Archive build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifacts
+          path: |
+            ./Target/*.tar
+            ./Target/*.img
